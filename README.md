@@ -11,6 +11,8 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 Reference : UCI Machine Learning Repository
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
+The script in run_analysis.R starts with the assumption that the Samsung data is available in the working directory in an unzipped folder data/CourseProject
+
 Repository contents :
 
 README.md - current file
