@@ -1,12 +1,9 @@
----
-title: "Codebook for the Getting and Cleaning Data Cpurse "
-output: html_document
----
-# *******Description of the original raw data *****
+
+# *** Description of the original raw data ***
 The data is obtained from the UCI Machine Learning Repository. The dataset used is the Human Activity Recognition  using Smartphones dataset.
 The data set has been a result of the observations of 30 volunteer subjects performing six activities of daily living - WALKING, WALKING UPSTAIRS, WALKING DOWNSTAIRS, SITTING, STANDING, LYING - while carrying a waist mounted smartphone with sensors to record different measurements.
  
-# **** Data Transformation ********
+# *** Data Transformation ***
  
 *Step 1 & 2 : Merge data and Extract the mean and std deviation variables
 Download the datafiles and read the data in from the individual files into datasets. Assign appropriate column names to the measurement dataset from the features.txt file. Assign appropriate column names, like subjectId, activityId and activityType to the relevant columns.
