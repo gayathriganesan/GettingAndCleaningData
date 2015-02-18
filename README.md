@@ -9,7 +9,7 @@ The purpose of this project is to be able to collect, work with and produce a ti
 4. Appropriately labels the data set with descriptive variable names. 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-Add a Codebook.md and README.md file for the project and add it to the Github repository. Upload the resultant tiday data set generated as a txt file into the repo.
+Add a Codebook.md and README.md file for the project and add it to the Github repository. Upload the resultant tidy data set as a txt file into the repo.
 
 #### The source of the data :
 *https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip* 
