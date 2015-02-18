@@ -25,11 +25,11 @@ activitytype<-read.table(file.path(filedir,"activity_labels.txt"),header=FALSE)
 # assign the column names for the relevant tables
 colnames(testmeasures)<-featuresdesc[,2]
 colnames(trainmeasures)<-featuresdesc[,2]
-colnames(testactivity)<-"activityId"
-colnames(trainactivity)<-"activityId"
-colnames(testsubjects)<-"subjectId"
-colnames(trainsubjects)<-"subjectId"
-colnames(activitytype)<-c("activityId","activityType")
+colnames(testactivity)<-"activityid"
+colnames(trainactivity)<-"activityid"
+colnames(testsubjects)<-"subjectid"
+colnames(trainsubjects)<-"subjectid"
+colnames(activitytype)<-c("activityid","activitytype")
 
 # to merge all train & test data into one complete dataset, we can do the below section.
 # but for the purpose of this project, we only need to get the colums with mean() & std() in them.
@@ -53,15 +53,25 @@ testdata<-cbind(testsubjects,testactivity,reqdtestX)
 # merge the reqd columns of both test & train data
 completereqddata<- rbind(traindata,testdata)
 # link the the name of the activity for the activityid
-datawithactivity<- merge(completereqddata,activitytype,by='activityId',all.x=TRUE);
+datawithactivity<- merge(completereqddata,activitytype,by='activityid',all.x=TRUE);
 datawithactivity<-datawithactivity[,-1] # remove the activityId column
 # clean up the column names 
 #remove the () from the variable names ; gsub() replaces all occurences of () with ""
 colnames(datawithactivity)<-gsub("\\(|\\)","",colnames(datawithactivity))
+# replace variables with BodyBody in their names with one Body
+colnames(datawithactivity)<-gsub("BodyBody","Body",colnames(datawithactivity)) 
+# replace the f in variables beginning with f to freq to denote frequency
+colnames(datawithactivity)<-sub("^f","freq",colnames(datawithactivity))  
+# replace the first t in variables beginning with t to time to denote time
+colnames(datawithactivity)<-sub("^t","time",colnames(datawithactivity)) 
+# replace with lower case variables
+colnames(datawithactivity)<-tolower(colnames(datawithactivity))  
+# *** leave the dots as separators to show the functions and x,y,z axis ***
+
 library(plyr)  # to group data & apply a summary fn to the group
 #creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 # numcolwise() runs a summary across all numeric columns
-tidyaverages<-  ddply(datawithactivity,.(subjectId,activityType), numcolwise(mean))
+tidyaverages<-  ddply(datawithactivity,.(subjectid,activitytype), numcolwise(mean))
 
 ## convert the result data set into a txt file to be uploaded
 write.table(tidyaverages, "averages.txt", row.name=FALSE)
