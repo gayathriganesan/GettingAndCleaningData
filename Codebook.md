@@ -2,6 +2,8 @@
 # *** Description of the original raw data ***
 The data is obtained from the UCI Machine Learning Repository. The dataset used is the Human Activity Recognition  using Smartphones dataset.
 The data set has been a result of the observations of 30 volunteer subjects performing six activities of daily living - WALKING, WALKING UPSTAIRS, WALKING DOWNSTAIRS, SITTING, STANDING, LYING - while carrying a waist mounted smartphone with sensors to record different measurements.
+# **** Assumption ****
+It is assumed that the datastes in the zipped folder are available in the GettingAndCleaningData/data/Courseproject folder  
  
 # *** Data Transformation ***
  
