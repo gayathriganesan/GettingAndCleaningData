@@ -14,29 +14,40 @@ There are 2 folders test and train with identical format of data in them. Each o
 ###  Data Transformation 
  
 ##### 1 & 2. *Merge data and Extract the mean and std deviation variables*
-Download the datafiles and read the data in from the individual files into datasets. Assign appropriate column names to the measurement dataset from the features.txt file. Assign appropriate column names to the subjects (subjectid) and y datasets 
-(activityid and activitytype).
+Download the datafiles and read the data in from the individual files into datasets. 
+Assign appropriate column names to the measurement dataset from the features.txt file. 
+Assign appropriate column names to the subjects (subjectid) and y datasets (activityid and activitytype).
 
 We could combine all the raw data in the train & test datasets into one dataset and I have the section for that in run_analysis.R file from Lines 35-39 (commented out). However for the purpose of this project, since we only need the mean and standard deviation for each measurement, ie. variables with labels having mean() & std() in them, I have subsetted this out using grep(), before combining the datasets. This way we only get the relevant data, instead of all the variables.
 
-Combine the data for the subjects(subject file) , activities (y file) and measurements(x file) using cbind. Repeat the same process for train data. This results in a dataset that has the subject , the activity performed by the subject and the associated measurements for that activity.
+Combine the test data for the subjects(subject file) , activities (y file) and measurements(x file) using cbind. Repeat the same process for train data. This results in 2 datasets (for test and train) that have the subject , the activity performed by the subject and the associated measurements for that activity.
 
 Combine the test and train data using rbind to get the complete dataset, completereqddata.
 
 ##### 3. *Use Descriptive Activity Names*
-Add a column to the "completereqddata" dataset with the detailed description of the activities (instead of the activityid), by looking up the corresponding activity id in the activity_labels.txt file (the merge function is used for this).
+Create a new dataset, *datawithactivity*, by adding a column to the "completereqddata" dataset with the detailed description of the activities (instead of the activityid), by looking up the corresponding activity id in the activity_labels.txt file (the merge function is used for this).
  
 ##### 4. *Descriptive variable names for the dataset* 
 Modify the labels of the variables in the resulting dataset to come up with more meaningful, descriptive names.
-I have done the following to clean up and make it more understandable :
+I have done the following to clean up the variable names and make it more meaningful :
  
- * removing the () from the variable names
+ * removing the () from the variable names  ( mean instead of mean() and std instead of std() )
  * change all variable names to lowercase
  * replacing the t and f in variable names beginning with t and f, with time and frequency 
 
+The *datawithactivity* dataset is the resultant dataset with the complete data from the test and train datasets, as per requirements. 
+
+The datawithactivity dataset contains 10299 observations and 68 variables. It lists all the mean and std deviation observations for the 30 subjects for all 6 activities.
+
 ##### 5. *Create a tidy data set with averages*
-A new dataset 'tidyaverages' is created from the previous dataset that contains all the averages of all variables for each subject and activity. ddply from the plyr package is used to split the dataset by activity and subject and then apply the mean function across all numeric columns.
+A new dataset *tidyaverages* is created from the previous dataset that contains the averages of all variables for each subject and activity. ddply from the plyr package is used to split the dataset by activity and subject and then apply the mean function across all numeric columns.
+
 The tidyaverages data set contains 180 observations with 68 variables
 
 The tidyaverages dataset is written into a text file **averages.txt** using the write.table function.
 
+### Variables in the *tidyaverages* dataset :
+The todayaverages dataset has 180 observations and 68 variables
+* subjectid - the id of the volunteer whose measurements are being recorded
+* activitytype -the type of activity that is being performed (WALKING, LAYING,...)
+* Variables 3 thru 68 - the averages of only the mean() and std() deviation variables specified in the features.txt file
