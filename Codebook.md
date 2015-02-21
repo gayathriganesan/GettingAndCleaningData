@@ -14,7 +14,7 @@ There are 2 folders test and train with identical format of data in them. Each o
 ###  Step-by-step results of the data transformation 
 * testmeasures , testsubjects, testactivity, trainmeasures, trainsubjects, trainactivity - datasets with the test & train data for the actual measurements, subject ids and activity ids, respectively.
 * assign appropriate colnames to all datasets
-* subset of testmeasures and trainmeasures, with just the mean() and std() variables
+* reqdtestX & reqdtrainX - subset of testmeasures and trainmeasures, with just the mean() and std() variables
 * testdata & traindata - combined datasets of the measurements, subjectids and activityids for test & train data
 * completereqddata - combined dataset containing test as well as train data
 * datawithactivity - merge the completereqddata dataset with activitytype, to get a descriptive activity name
