@@ -40,14 +40,14 @@ The *datawithactivity* dataset is the resultant dataset with the complete data f
 The datawithactivity dataset contains 10299 observations and 68 variables. It lists all the mean and std deviation observations for the 30 subjects for all 6 activities.
 
 ##### 5. *Create a tidy data set with averages*
-A new dataset *tidyaverages* is created from the previous dataset that contains the averages of all variables for each subject and activity. ddply from the plyr package is used to split the dataset by activity and subject and then apply the mean function across all numeric columns.
+A new dataset *tidyaverages* is created from the previous dataset that contains the averages of all variables for each subject and activity. ddply from the plyr package is used to split the dataset by activity and subject and then apply the mean function across all numeric columns for each subset.
 
 The tidyaverages data set contains 180 observations with 68 variables
 
 The tidyaverages dataset is written into a text file **averages.txt** using the write.table function.
 
 ### Variables in the *tidyaverages* dataset :
-The todayaverages dataset has 180 observations and 68 variables
+The tidyaverages dataset has 180 observations and 68 variables
 * subjectid - the id of the volunteer whose measurements are being recorded
 * activitytype -the type of activity that is being performed (WALKING, LAYING,...)
 * Variables 3 thru 68 - the averages of only the mean() and std() deviation variables specified in the features.txt file
